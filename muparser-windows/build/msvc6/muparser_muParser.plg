@@ -1,0 +1,47 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: muParser - Win32 Release Static--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOKUME~1\INGOBE~1\LOKALE~1\Temp\RSP1A.tmp" with contents
+[
+/nologo /MD /w /W0 /GR /O2 /I "..\..\include" /D "WIN32" /D "_LIB" /D "NDEBUG" /D "_WIN32" /Fo"obj\vc_static_rel\muParser/" /Fd"..\..\lib\muparser.pdb" /FD /EHsc /c 
+"C:\Dokumente und Einstellungen\Ingo Berg\Eigene Dateien\Projekte\muParser\src\muParser.cpp"
+"C:\Dokumente und Einstellungen\Ingo Berg\Eigene Dateien\Projekte\muParser\src\muParserBase.cpp"
+"C:\Dokumente und Einstellungen\Ingo Berg\Eigene Dateien\Projekte\muParser\src\muParserBytecode.cpp"
+"C:\Dokumente und Einstellungen\Ingo Berg\Eigene Dateien\Projekte\muParser\src\muParserCallback.cpp"
+"C:\Dokumente und Einstellungen\Ingo Berg\Eigene Dateien\Projekte\muParser\src\muParserDLL.cpp"
+"C:\Dokumente und Einstellungen\Ingo Berg\Eigene Dateien\Projekte\muParser\src\muParserError.cpp"
+"C:\Dokumente und Einstellungen\Ingo Berg\Eigene Dateien\Projekte\muParser\src\muParserInt.cpp"
+"C:\Dokumente und Einstellungen\Ingo Berg\Eigene Dateien\Projekte\muParser\src\muParserTest.cpp"
+"C:\Dokumente und Einstellungen\Ingo Berg\Eigene Dateien\Projekte\muParser\src\muParserTokenReader.cpp"
+]
+Creating command line "cl.exe @C:\DOKUME~1\INGOBE~1\LOKALE~1\Temp\RSP1A.tmp" 
+Creating temporary file "C:\DOKUME~1\INGOBE~1\LOKALE~1\Temp\RSP1B.tmp" with contents
+[
+/nologo /out:"..\..\lib\muparser.lib" 
+".\obj\vc_static_rel\muParser\muParser.obj"
+".\obj\vc_static_rel\muParser\muParserBase.obj"
+".\obj\vc_static_rel\muParser\muParserBytecode.obj"
+".\obj\vc_static_rel\muParser\muParserCallback.obj"
+".\obj\vc_static_rel\muParser\muParserDLL.obj"
+".\obj\vc_static_rel\muParser\muParserError.obj"
+".\obj\vc_static_rel\muParser\muParserInt.obj"
+".\obj\vc_static_rel\muParser\muParserTest.obj"
+".\obj\vc_static_rel\muParser\muParserTokenReader.obj"
+]
+Creating command line "link.exe -lib @C:\DOKUME~1\INGOBE~1\LOKALE~1\Temp\RSP1B.tmp"
+<h3>Output Window</h3>
+Compiling...
+Error spawning cl.exe
+
+
+
+<h3>Results</h3>
+muparser.lib - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
