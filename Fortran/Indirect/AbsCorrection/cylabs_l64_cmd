@@ -1,0 +1,2 @@
+f2py -c --fcompiler=gnu95 -m cylabs_lnx64 cylabs_main.f90 cylabs_subs.f90 only: cylabs :
+
