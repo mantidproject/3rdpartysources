@@ -1,4 +1,5 @@
       FUNCTION F(AMU,T,SEC1,SEC2)
+      real*4 amu,t,sec1,sec2
       S=AMU*T*(SEC1-SEC2)
       F=1.0
       IF(S.EQ.0.)then
@@ -11,9 +12,9 @@
       END
 c
       SUBROUTINE open_f(nit,fname)
-      character*(*) fname
-      logical found
+      character*120 fname
       integer nit
+      logical found   
       INQUIRE(FILE=fname,EXIST=found)
       if(found)then
        OPEN(UNIT=nit,FILE=fname,STATUS='OLD',FORM='FORMATTED')
@@ -22,4 +23,3 @@ c
       OPEN(UNIT=nit,FILE=fname,STATUS='NEW',FORM='FORMATTED')
       RETURN
       END
-c

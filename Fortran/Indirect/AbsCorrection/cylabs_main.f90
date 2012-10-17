@@ -15,15 +15,15 @@ c  wavelas - elastic wavelength
 c  waves - list of wavelengths
 c  Output parameters :
 c  kill - =0 if succesful, else error code
-c  Abs1 - Ass
-c  Abs2 - Assc
-c  Abs3 - Acsc
-c  Abs4 - Acc
+c  A1 - Ass
+c  A2 - Assc
+c  A3 - Acsc
+c  A4 - Acc
 c
       SUBROUTINE CYLABS(astep_in,beam,nan_in,radii,
      1 density,sigs,siga,angle,wavelas,waves,n_sp, fname, l_fn,
-     2 kill, Abs1, Abs2, Abs3, Abs4)
-      INCLUDE 'mod_files.inc'
+     2 kill, A1, A2, A3, A4)
+      INCLUDE 'mod_files.f90'
       parameter (mlam=10,mann=3,mbank=20)
       real beam(9)
 cf2py intent(in) :: beam
@@ -41,8 +41,8 @@ cf2py intent(in) :: nan_in, n_sp, l_fn
 cf2py intent(in) :: fname
       integer kill
 cf2py intent(out) :: kill
-      real Abs1(mlam),Abs2(mlam),Abs3(mlam),Abs4(mlam)
-cf2py intent(out) :: Abs1, Abs2, Abs3, Abs4
+      real A1(mlam),A2(mlam),A3(mlam),A4(mlam)
+cf2py intent(out) :: A1, A2, A3, A4
 C
       REAL abscs(mann),assc(mann)
       COMMON/PROFBL/PROFIL(50),NPROF,PRSTEP
@@ -63,13 +63,6 @@ c      lptfile(1:l_lpt)=fname(1:l_fn)//'cylabs.lpt'
 c      l_fn=l_lpt
       lpt=0
 
-      NLAMB=mlam
-      do J=1,NLAMB                                !loop over wavelengths
-       Abs1(J)=1.0
-       Abs2(J)=1.0
-       Abs3(J)=1.0
-       Abs4(J)=1.0
-      end do
       nprof=2                     ! NO. OF PROFILE VALUES AND VALUES
       do n=1,nprof
        PROFIL(n)=1.0
@@ -163,6 +156,7 @@ c
        write(6,1009)n_sp,angle
 1009   format(' Spectrum = ',i4,' ; Detector angle = ',f10.5)
       endif
+      NLAMB=mlam
       do I=1,NAN                              !loop over annuli
        do IL=1,NLAMB                          !CALC SCATTERING C/S AT EACH WAVELENGTH 
         SIGSL(I,IL)=scatxs(I)
@@ -188,10 +182,10 @@ C
        end do                                     !end loop IR
        nanw=nan-1
        CALL ACYL(MS,ASS,assc,ACSC,ACC,AREAS,AREAC)
-       Abs1(J)=ASS
-       Abs2(J)=ASSC(1)
-       Abs3(J)=ACSC
-       Abs4(J)=ACC
+       A1(J)=ASS
+       A2(J)=ASSC(1)
+       A3(J)=ACSC
+       A4(J)=ACC
        if(lpt.gt.0)WRITE(6,1010) waves(J),ASS,ASSC(1),ACSC,ACC
 1010   FORMAT(5F10.5)
       end do                                       !end loop J
