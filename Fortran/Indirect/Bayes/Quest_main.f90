@@ -110,6 +110,10 @@ c     reals = [efix, theta[isp], rscl, bnorm]
        XSCALE(n)=1.0                       !'xscale', XSCALE, NSPEC
        yprob=0.0
       end do
+      lptfile = ''
+      fileout1 = ''
+      fileout2 = ''
+      fileout3 = ''
       l_lpt=l_fn+8
       lptfile(1:l_lpt)=sfile(1:l_fn)//'_Qst.lpt'
       l_file=l_fn+8

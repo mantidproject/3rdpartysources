@@ -117,7 +117,7 @@ c     reals = [efix, theta[isp], rscl, bnorm]
        DTNORM(n)=1.0                       !DTNORM, NSPEC
        XSCALE(n)=1.0                       !XSCALE, NSPEC
       end do
-	  
+	    lptfile = ''
       l_lpt=l_fn+11
       lptfile(1:l_lpt)=vfile(1:l_fn)//'_resnrm.lpt'
       if(ISP.eq.1)then                  !print info	
