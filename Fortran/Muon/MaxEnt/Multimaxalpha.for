@@ -48,14 +48,14 @@ c      PROGRAM multimax
       DO 999 J=1,10
       ngo=ngo+1
       write(str,'('' CYCLE NUMBER='',i2)')ngo
-	call module_print(TRIM(str))
+c	call module_print(TRIM(str))
 
 	
 
         write(str,345)
 345     format(' iter  test:<.02?   entropy    chitarget     chisq',
      +   '      freqsum ')
-	call module_print(TRIM(str))
+c	call module_print(TRIM(str))
 1     CALL MAXENT(NGROUPS,NPTS,P,DATUM,SIGMA,def,BASE,10,.FALSE.)
       IF (fitdead.eq.'Y') THEN
           CALL DEADFIT(NGROUPS,NPTS,P,DATUM,SIGMA

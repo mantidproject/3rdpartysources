@@ -38,12 +38,12 @@ C
 3     CONTINUE
       write(str,4) 
 4     FORMAT(1X,'AMPLITUDES ')
-      call module_print(TRIM(str))
+c      call module_print(TRIM(str))
       write(str,*)(AMP(I),I=1,NGROUPS)
-		call module_print(TRIM(str))
+c		call module_print(TRIM(str))
       write(str,*) ' fixed phases:'
-		call module_print(TRIM(str))
+c		call module_print(TRIM(str))
       write(str,*) (phi(I),I=1,NGROUPS)
-		call module_print(TRIM(str))
+c		call module_print(TRIM(str))
       RETURN
       END

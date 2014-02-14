@@ -67,7 +67,7 @@ c      READ(5,11) TITLE
 944   CONTINUE
 C       LOOP TO CREATE 'DATUM(K,I)'
 c      write(99,*) '    group, no. of hists...'
-	call module_print("    group, no. of hists...")
+c	call module_print("    group, no. of hists...")
       DO 3 I=1,NGROUPS
       IF(HISTS(I).EQ.0.)GOTO 55
       DO 6 J=1,I1STGOOD-1
@@ -78,13 +78,13 @@ c      IF (DATUM(K,I).GT.1.E6)write(99,*)K,I,DATUM(K,I)
       TOTFCOUNTS=TOTFCOUNTS+DATUM(K,I)
 5     CONTINUE
 55    write(str,*) i,hists(i)
-	call module_print(TRIM(str))
+c	call module_print(TRIM(str))
   
 3     CONTINUE
       write(str,*) ' Total counts in all histos=',TOTHCOUNTS/1.e3
-	call module_print(TRIM(str))      
+c	call module_print(TRIM(str))      
 	write(str,*) ' Good muons (used for normn. to 10 Mev)=',TOTFCOUNTS
-	call module_print(TRIM(str))
+c	call module_print(TRIM(str))
       icount=0
 C     NORMALISE TO 10 MEGAEVENTS
       FNORM=10000000./TOTFCOUNTS
@@ -111,7 +111,7 @@ C            DATT STORES ORIGINAL DATA (NORMALISED)
 c       fnorm allows for scaling of data to 10 Mev
       if(datum(i,j)*tau.ge.1.0) then
 	 write(str,*) i,j,datum(i,j),taud(j)
-		call module_print(TRIM(str))
+c		call module_print(TRIM(str))
 	endif
       CORR(I,J)=TAU*DATUM(I,J)*DATUM(I,J)
       IF (DATUM(I,J).GT.0.5) THEN
@@ -131,7 +131,7 @@ c adjusts sigma for missing counts or groups
         sigma(i,j)=sigma(i,j)*facfake
         if(sigma(i,j).eq.0.0) then
          write(str,'('' ZERO SIG!!!'',i,i)') i,j
-	   call module_print(TRIM(str))
+c	   call module_print(TRIM(str))
         endif
 	 enddo
 	enddo

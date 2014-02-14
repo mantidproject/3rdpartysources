@@ -56,7 +56,7 @@ c     implicit none
       call module_get_int(pars_in,'res',Ires)
 	res=real(Ires)/1e6
 c	write(99,*) res
-      call module_print("Hello")
+c      call module_print("Hello")
 
       call module_get_int(pars_in,'Tzeroch',zeroch)
 	call module_get_int(pars_in,'firstgoodch',istgood)
@@ -345,9 +345,9 @@ C       LOADS IN DEADTIMES
 50    CONTINUE
       CLOSE(16)
       write(str,*) ' Initial values of dead times'
-	call module_print(TRIM(str))
+c	call module_print(TRIM(str))
       write(str,*) (taud(i),i=1,ngroups)
-	call module_print(TRIM(str))
+c	call module_print(TRIM(str))
  	tcounts=0
 	write(69,*) nhists, histlen
       do ig=1,NHISTS

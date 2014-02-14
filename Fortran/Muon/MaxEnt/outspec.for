@@ -33,19 +33,19 @@ C
       ibads=ibads+1
       if (ibads.gt.10) goto 999
       write(str,555)i,j
-		call module_print(TRIM(str))
+c		call module_print(TRIM(str))
 555   format(' devn .gt. 5 std devs on point:',i4,' of group:',i2)
       if (ibads.eq.10) then
        write(str,*) ' ... lots of baddies in group ',j,' ...'
-		call module_print(TRIM(str))
+c		call module_print(TRIM(str))
 	 endif
 999   continue
       chi(j)=chi(j)/float(npts)
 998   continue
       write(str,*) ' contribs to chi**2 from each group:'
-		call module_print(TRIM(str))
+c		call module_print(TRIM(str))
       write(str,*) (chi(J),J=1,NGROUPS)
-		call module_print(TRIM(str))
+c		call module_print(TRIM(str))
       DO 99 I=npts/2,NPTS
        DO 99 J=1,NGROUPS
         IF (SIGMA(I,J).GT.1.E3) GOTO 99
@@ -54,16 +54,16 @@ C
 99    CONTINUE
       if(nsum.eq.0) then
         write(str,*)' no data in last half, so last half sum = 0'
-		call module_print(TRIM(str))
+c		call module_print(TRIM(str))
         goto 87
       endif
       BUM=SUM/NSUM
       write(str,*) ' Points:',npts
-		call module_print(TRIM(str))
+c		call module_print(TRIM(str))
       write(str,*) ' Last half sum:',BUM
-		call module_print(TRIM(str))
+c		call module_print(TRIM(str))
 87    write(str,*) ' Run: ',irunno
-	call module_print(TRIM(str))
+c	call module_print(TRIM(str))
 !      write(99,'('' Do you want to see some time diagnostics? [n]'',$)')
 !      read(5,84) aa
 !84    format(a1)

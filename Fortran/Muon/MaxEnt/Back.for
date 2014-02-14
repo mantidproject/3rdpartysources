@@ -63,19 +63,19 @@ C       FIRST APPROXIMATION TO AMPLITUDE : PROP TO EXP
 1     CONTINUE
 c      write(99,*) ' PHASES AS LOADED...'
 
-	call module_print("")
-	call module_print(" PHASES AS LOADED...")
-	call module_print("")
+c	call module_print("")
+c	call module_print(" PHASES AS LOADED...")
+c	call module_print("")
 	write(str,*) (PH(I),I=1,NGROUPS)
 
 
 123   FORMAT(A10)
-	call module_print(TRIM(str))
+c	call module_print(TRIM(str))
       CLOSE(15)
 c     write(99,*) ' EXPONENTIALS AS FITTED...'
 c     write(99,*) (D(J),J=1,NGROUPS)
-      call module_print(" EXPONENTIALS AS FITTED...")
+c      call module_print(" EXPONENTIALS AS FITTED...")
 	write(str,*) (D(J),J=1,NGROUPS)
-	call module_print(TRIM(str))
+c	call module_print(TRIM(str))
       RETURN
       END
