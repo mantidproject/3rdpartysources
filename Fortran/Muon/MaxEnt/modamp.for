@@ -36,14 +36,19 @@ C
       B(I)=AMP(I)*SN(I)
       phi(i)=phase(i)*57.296
 3     CONTINUE
-      write(str,4) 
+
+      write(str,4)
 4     FORMAT(1X,'AMPLITUDES ')
-c      call module_print(TRIM(str))
+      call print_log_msg("notice", TRIM(str))
+
       write(str,*)(AMP(I),I=1,NGROUPS)
-c		call module_print(TRIM(str))
-      write(str,*) ' fixed phases:'
-c		call module_print(TRIM(str))
+      call print_log_msg("notice", TRIM(str))
+
+      write(str,*) 'Fixed Phases:'
+      call print_log_msg("notice", TRIM(str))
+
       write(str,*) (phi(I),I=1,NGROUPS)
-c		call module_print(TRIM(str))
+      call print_log_msg("notice", TRIM(str))
+
       RETURN
       END

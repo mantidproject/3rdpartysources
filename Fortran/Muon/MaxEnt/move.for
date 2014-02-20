@@ -24,16 +24,20 @@ C
       IF(ABS(FX).GE.1.E-3) then
         jtest=jtest+1
         if(jtest.gt.10000) then
+
           write(str,*) ' stuck in MOVE : chi**2 not tight enough'
-c		call module_print(TRIM(str))
+          call print_log_msg("notice", TRIM(str))
+
           do 222 i=1,p
 222       sigma(i)=sigma(i)*.99
           factor=factor*.99
           facdef=factor
           facfake=facfake*.99
+          
           write(str,333) factor
 333       format(' tightening looseness factor by 1 % to:',f5.3)
-c	    call module_print(TRIM(str))
+          call print_log_msg("notice", TRIM(str))
+
           goto 444
         endif
         GOTO 41

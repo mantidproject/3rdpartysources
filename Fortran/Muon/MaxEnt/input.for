@@ -54,10 +54,10 @@ c      READ(5,*) (TEMP(K),K=1,ITOTAL)
 c      write(99,*) ' histo no, idest, temp(100), coldstore(100,idest)'
 c      write(99,*) j,idest,temp(100),coldstore(100,idest)
 c121   READ(5,'(5X,F9.0)') HCOUNTS
-      write(69,*) histco(j)
+C     write(69,*) histco(j)
 121   READ(histco(j),'(5X,F9.0)') HCOUNTS
-      write(69,*) hcounts
-	write(69,*) i1stgood
+C     write(69,*) hcounts
+c	write(69,*) i1stgood
       TOTHCOUNTS=TOTHCOUNTS+HCOUNTS
 c      READ(5,11) TITLE
 1     CONTINUE
@@ -66,8 +66,9 @@ c      READ(5,11) TITLE
       IF (HISTS(J).EQ.0.)MM=MM+1
 944   CONTINUE
 C       LOOP TO CREATE 'DATUM(K,I)'
-c      write(99,*) '    group, no. of hists...'
-c	call module_print("    group, no. of hists...")
+
+      call print_log_msg("notice", "Group, no. of hists...")
+
       DO 3 I=1,NGROUPS
       IF(HISTS(I).EQ.0.)GOTO 55
       DO 6 J=1,I1STGOOD-1
@@ -78,13 +79,17 @@ c      IF (DATUM(K,I).GT.1.E6)write(99,*)K,I,DATUM(K,I)
       TOTFCOUNTS=TOTFCOUNTS+DATUM(K,I)
 5     CONTINUE
 55    write(str,*) i,hists(i)
-c	call module_print(TRIM(str))
+
+      call print_log_msg("notice", TRIM(str))
   
 3     CONTINUE
-      write(str,*) ' Total counts in all histos=',TOTHCOUNTS/1.e3
-c	call module_print(TRIM(str))      
-	write(str,*) ' Good muons (used for normn. to 10 Mev)=',TOTFCOUNTS
-c	call module_print(TRIM(str))
+
+      write(str,*) 'Total counts in all histos=',TOTHCOUNTS/1.e3
+      call print_log_msg("notice", TRIM(str))
+
+   	write(str,*) 'Good muons (used for normn. to 10 Mev)=',TOTFCOUNTS
+      call print_log_msg("notice", TRIM(str))
+
       icount=0
 C     NORMALISE TO 10 MEGAEVENTS
       FNORM=10000000./TOTFCOUNTS
@@ -110,8 +115,10 @@ C            DATT STORES ORIGINAL DATA (NORMALISED)
       TAU=TAUD(J)/(RES*HISTS(J)*FRAMES*fnorm)
 c       fnorm allows for scaling of data to 10 Mev
       if(datum(i,j)*tau.ge.1.0) then
-	 write(str,*) i,j,datum(i,j),taud(j)
-c		call module_print(TRIM(str))
+
+      write(str,*) i,j,datum(i,j),taud(j)
+      call print_log_msg("notice", TRIM(str))
+
 	endif
       CORR(I,J)=TAU*DATUM(I,J)*DATUM(I,J)
       IF (DATUM(I,J).GT.0.5) THEN
@@ -130,8 +137,10 @@ c adjusts sigma for missing counts or groups
        do  j=1,NGROUPS
         sigma(i,j)=sigma(i,j)*facfake
         if(sigma(i,j).eq.0.0) then
+
          write(str,'('' ZERO SIG!!!'',i,i)') i,j
-c	   call module_print(TRIM(str))
+         call print_log_msg("notice", TRIM(str))
+
         endif
 	 enddo
 	enddo

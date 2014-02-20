@@ -41,21 +41,21 @@ c      PROGRAM multimax
 
       P=NPTS*NGROUPS
       CALL INPUT(NHISTS,NGROUPS,NPTS,P,DATUM,SIGMA,CORR,DATT)
-	write(99,*) "back from input"
+C	write(99,*) "back from input"
       CALL START(NGROUPS,NPTS,P)
       CALL BACK(HISTS,NGROUPS,NPTS,P,DATUM,SIGMA,CORR)
       ngo=-1
       DO 999 J=1,10
       ngo=ngo+1
       write(str,'('' CYCLE NUMBER='',i2)')ngo
-c	call module_print(TRIM(str))
 
-	
+      call print_log_msg("notice", TRIM(str))
 
         write(str,345)
 345     format(' iter  test:<.02?   entropy    chitarget     chisq',
      +   '      freqsum ')
-c	call module_print(TRIM(str))
+      call print_log_msg("notice", TRIM(str))
+
 1     CALL MAXENT(NGROUPS,NPTS,P,DATUM,SIGMA,def,BASE,10,.FALSE.)
       IF (fitdead.eq.'Y') THEN
           CALL DEADFIT(NGROUPS,NPTS,P,DATUM,SIGMA

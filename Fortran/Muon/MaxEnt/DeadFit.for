@@ -68,21 +68,18 @@ c      write(99,*) ' WIGGLE...'
 c      write(99,*) (A(J)*ZR(50)+B(J)*ZI(50),J=1,4)
 c      write(99,*) ' amplitudes of exponentials:'
 c      write(99,*) (d(J),J=1,NGROUPS)
-c	call module_print(" amplitudes of exponentials:")
-	write(str,*) (D(J),J=1,NGROUPS)
-c	call module_print(TRIM(str))
+      
+      call print_log_msg("notice", "Amplitudes of exponentials:")
+      write(str,*) (D(J),J=1,NGROUPS)
+      call print_log_msg("notice", TRIM(str))
 
-c      write(99,*) ' changes this cycle:'
-c      write(99,*) (c(J),J=1,NGROUPS)
-c 	call module_print(" changes this cycle:")
-	write(str,*) (c(J),J=1,NGROUPS)
-c	call module_print(TRIM(str))
+      call print_log_msg("notice", "Changes this cycle:")
+      write(str,*) (c(J),J=1,NGROUPS)
+      call print_log_msg("notice", TRIM(str))
 
-c     write(99,*) ' DEADTIMES:'
-c      write(99,*) (TAUD(J),J=1,NGROUPS)
-c 	call module_print(" DEADTIMES:")
-	write(str,*) (TAUD(J),J=1,NGROUPS)
-c	call module_print(TRIM(str))
+      call print_log_msg("notice", "DEADTIMES:")
+      write(str,*) (TAUD(J),J=1,NGROUPS)
+      call print_log_msg("notice", TRIM(str))
  
       RETURN
       END

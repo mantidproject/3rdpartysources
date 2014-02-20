@@ -38,20 +38,14 @@ C
       DO 5 J=1,NGROUPS
 5     S=S+AMP(J)
       S=S/FLOAT(NGROUPS-MM)
-c      write(99,*) ' s is... ',s
-c      write(99,7)
-c7     FORMAT(1X,'AMPLITUDES  ')
-c      write(99,*) (AMP(J)/S,J=1,NGROUPS)
-c      call module_print(" AMPLITUDES")
-	write(str,*) (AMP(J)/S,J=1,NGROUPS)
-c	call module_print(TRIM(str))
 
-c      write(99,8) 
-c8     FORMAT(1X,'PHASES =  ')
-c      write(99,*)(PHI(J),J=1,NGROUPS)
-c      call module_print(" PHASES =  ")
-	write(str,*) (PHI(J),J=1,NGROUPS)
-c	call module_print(TRIM(str))
+      call print_log_msg("notice", "AMPLITUDES:")
+      write(str,*) (AMP(J)/S,J=1,NGROUPS)
+      call print_log_msg("notice", TRIM(str))
+
+      call print_log_msg("notice", "PHASES:")
+      write(str,*) (PHI(J),J=1,NGROUPS)
+      call print_log_msg("notice", TRIM(str))
 
       DO 6 J=1,NGROUPS
       amp(j)=amp(j)/s

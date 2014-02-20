@@ -33,13 +33,18 @@ C
       DATUM(K,J)=DATUM(K,J)-SCALE*E(K)
 5     continue
 3     CONTINUE
+
       write(str,*) ' exponentials:'
-c		call module_print(TRIM(str))
+      call print_log_msg("notice", TRIM(str))
+
       write(str,*) (d(J),J=1,NGROUPS)
-c		call module_print(TRIM(str))
+      call print_log_msg("notice", TRIM(str))
+
       write(str,*) ' changes this cycle:'
-c		call module_print(TRIM(str))
+      call print_log_msg("notice", TRIM(str))
+
       write(str,*) (c(J),J=1,NGROUPS)
-c		call module_print(TRIM(str))
+      call print_log_msg("notice", TRIM(str))
+      
       RETURN
       END

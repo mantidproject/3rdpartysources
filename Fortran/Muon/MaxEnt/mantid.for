@@ -9,7 +9,7 @@ C* almost like dictionary access.                                     *
 C**********************************************************************
 
       subroutine mantid_maxent(data_in, groups_in, taud_in, phase_in,
-     +int_par, real_par, bool_par, f_out, fchan_out, taud_out, phi_out)
+     +f_out, fchan_out, taud_out, phi_out)
 
 C     Correct way to use STDOUT pipe.  For debug statements.
       use iso_fortran_env, only stdout => output_unit
@@ -26,19 +26,32 @@ Cf2py intent(in) phase_in
 
 C     Declare python callbacks, which we use to look up input parameters of
 C     various types.
-Cf2py character(100) par_name      
+Cf2py character(100) par_name
+Cf2py intent(callback) int_par
       external int_par
       integer int_par
 Cf2py integer int_value
 Cf2py int_value = int_par(par_name)
+Cf2py intent(callback) real_par
       external real_par
       real real_par
 Cf2py real real_value
 Cf2py real_value = real_par(par_name)
+Cf2py intent(callback) bool_par
       external bool_par
       logical bool_par
 Cf2py logical bool_value
 Cf2py bool_value = bool_par(par_name)
+
+C     Declare python callback for logging.  Arbitrarily large size for
+C     log_message parameter.
+Cf2py character(20)   log_priority
+Cf2py character(1000) log_message
+Cf2py intent(callback) logger
+      external logger
+      logical logger
+      logical void
+Cf2py void = logger(log_priority, log_message)
 
 C     Results.
       real f_out(68000)
@@ -74,7 +87,7 @@ C     Same variables as declared in the original opengenie_maxent subroutine.
       common/file/name
       common/grouping/group(64)
       common/mach/machine
-      common/sense/phi(64),taud(64)
+      common/sense/phi(64),taud(64),phases(64)
       common/savetime/ngo,i2pwr
       common/moments/bmindef
       character(40) title,name
@@ -88,6 +101,8 @@ C     Same variables as declared in the original opengenie_maxent subroutine.
       integer itotal,nhistos,histo,dest,histlen
       integer group
       real res, num, demon
+
+      call print_log_msg("debug", "Starting underlying Fortran.")
 
 C     Assign input parameters to common blocks in roughly the same fashion as
 C     the original opengenie_maxent subroutine.  I've removed all of the code
@@ -226,6 +241,7 @@ c         c assuming res= .008 < .010 or .016 > .010
 
 c     deadtimes
       taud = taud_in
+      phases = phase_in
 
       tcounts=0
       do ig=1,nhists
@@ -249,4 +265,14 @@ c     deadtimes
       taud_out = taud
       phi_out = phi
 
+      call print_log_msg("debug", "Leaving Fortran.")
+
       end subroutine
+
+      subroutine print_log_msg(log_priority, log_message)
+C     A wrapper for logger function pointer, which Fortran will only ever allow
+C     us to call if we store it's return value.  Using this subroutine we can
+C     now just do 'call print_log_msg("debug", "message")'
+      logical void
+      void = logger(log_priority, log_message)
+      end

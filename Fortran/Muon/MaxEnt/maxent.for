@@ -108,8 +108,10 @@ c
       DO 22 I=1,N
 22    S=S-F(I)*ALOG(F(I)/(BASE(I)*2.7182818285))/(BLANK*2.7182818285)
       A=S*BLANK*2.7182818285/XSUM
+      
       write(str,103)ITER,TEST,S,CHTARG,CHISQ,XSUM
-c		call module_print(TRIM(str))
+      call print_log_msg("notice", TRIM(str))
+
 103   FORMAT(I3,4X,5(E10.4,2X))
       BETA(1)=-0.5*C1(1)/C2(1,1)
       BETA(2)=0.

@@ -10,11 +10,11 @@ C
       COMMON/RUNDATA/RES,IRUNNO,IFRAM
       COMMON/DETECT/A,B,E,c,d
       COMMON/FASE/PHASE(64),phshift
-      common/sense/phi(64),TAUD(64)
+      common/sense/phi(64),TAUD(64),phases(64)
       REAL A(64),B(64),c(64),d(64),E(8192),taud
       REAL DATUM(NPTS,NGROUPS),SIGMA(NPTS,NGROUPS)
       CHARACTER*1 FITDEAD,FIXPHASE,FITAMP
-	CHARACTER*2046 str
+	CHARACTER*2046 str      
       DATA AMP /1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
      &          1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,48*1.0/
       DO 2 J=1,NGROUPS
@@ -53,29 +53,22 @@ C       FIRST APPROXIMATION TO AMPLITUDE : PROP TO EXP
         AMP(J)=D(J)/SUM
       ENDIF
 11    CONTINUE
-      OPEN(15,FILE='PHASE.DAT',STATUS='OLD')  
+      
       DO 1 I=1,NGROUPS
-      READ(15,*) PH(I)
+      PH(I) = phases(i)
       IF(HISTS(I).EQ.0)GOTO 1
       PHASE(I)=PH(I)/57.296
       A(I)=AMP(I)*COS(PHASE(I))
       B(I)=AMP(I)*SIN(PHASE(I))
 1     CONTINUE
-c      write(99,*) ' PHASES AS LOADED...'
 
-c	call module_print("")
-c	call module_print(" PHASES AS LOADED...")
-c	call module_print("")
+      call print_log_msg("notice", "PHASES AS LOADED...")
 	write(str,*) (PH(I),I=1,NGROUPS)
+      call print_log_msg("notice", TRIM(str))
 
-
-123   FORMAT(A10)
-c	call module_print(TRIM(str))
-      CLOSE(15)
-c     write(99,*) ' EXPONENTIALS AS FITTED...'
-c     write(99,*) (D(J),J=1,NGROUPS)
-c      call module_print(" EXPONENTIALS AS FITTED...")
+      call print_log_msg("notice", "EXPONENTIALS AS FITTED...")
 	write(str,*) (D(J),J=1,NGROUPS)
-c	call module_print(TRIM(str))
+      call print_log_msg("notice", TRIM(str))
+
       RETURN
       END
