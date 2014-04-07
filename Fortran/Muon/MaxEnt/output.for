@@ -19,7 +19,7 @@ C      use FileDef
       REAL F(68000),amp(64),asym(64),sum,ao(64)
       INTEGER N,IRUNNO
       CHARACTER*20 FNAME
-      character*1 fitdead,fixphase,fitamp,ans,an
+      character*1 fitamp,ans,an
       fperchan=1./(RES*float(npts)*2.)
 !      if ( fixphase.ne.'Y') then
 !        write(99,*) ' Save fitted phases ? [N]: '

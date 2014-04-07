@@ -18,13 +18,14 @@ c      PROGRAM multimax
       REAL DATUM(68000),SIGMA(68000),F(68000),BASE(68000),
      +CONVOLR(8192),CONVOLI(8192),HISTS(64)
       INTEGER P,GROUP(64)
-      CHARACTER*1 ANS,AN,FITDEAD,FIXPHASE,FITAMP,firstgo
+      CHARACTER*1 ANS,AN,FITAMP,firstgo
       COMMON/FILE/NAME
       COMMON/DETECT/A,B,E,c,d
       REAL A(64),B(64),c(64),d(64),E(8192)
       common/sense/phi(64),TAUD(64)
       REAL TAUD
       REAL CORR(68000),DATT(68000)
+      logical FITDEAD,FIXPHASE
 	character*2046 str
       common/fac/factor,facdef,facfake,ratio
       common/channels/itzero,ipulse1,ipulse2,i1stgood,itotal
@@ -57,13 +58,13 @@ C	write(99,*) "back from input"
       call print_log_msg("notice", TRIM(str))
 
 1     CALL MAXENT(NGROUPS,NPTS,P,DATUM,SIGMA,def,BASE,10,.FALSE.)
-      IF (fitdead.eq.'Y') THEN
+      IF (fitdead) THEN
           CALL DEADFIT(NGROUPS,NPTS,P,DATUM,SIGMA
      +                  ,CORR,DATT)
       ELSE  
           CALL MODBAK(HISTS,NGROUPS,NPTS,P,DATUM,SIGMA)
       ENDIF
-      IF(fixphase.EQ.'Y') THEN
+      IF(fixphase) THEN
           CALL MODAMP(HISTS,NGROUPS,NPTS,P,DATUM,SIGMA)
       ELSE
           CALL MODAB(HISTS,NGROUPS,NPTS,P,DATUM,SIGMA)

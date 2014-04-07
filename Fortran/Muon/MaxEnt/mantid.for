@@ -65,11 +65,11 @@ Cf2py intent(out) phi_out
 
 C     Same variables as declared in the original opengenie_maxent subroutine.
       character(255) readdata
-      logical onepulse, varydt, fixphasein, retlog
+      logical onepulse, varydt, fitdead, fixphase, retlog
       integer nptsin, zeroch, istgoodch, ierr, debug
       real deflevel, sigmaloss
       integer p,field,ig
-      character(1) ans,fitdead,fixphase,fitamp,firstgo
+      character(1) ans,fitamp,firstgo
       common/MaxPage/n,f
       common/ans/ans,firstgo
       common/fase/phase,phshift
@@ -124,10 +124,10 @@ C     may be some redundancy still.
       deflevel = real_par("deflevel")
       Sigmaloss = real_par("sigloose")
 
-C     In the OpenGENIE version, fitphase was (incorrectly?) used to set varydt.
+C     In the OpenGENIE version, fixphase was (incorrectly?) used to set varydt.
 C     I'm assuming this way is correct.
-      varydt = bool_par("fitdt")
-      fixphasein = bool_par("fitphase")
+      fitdead = bool_par("fitdt")
+      fixphase = bool_par("fixphase")
 
       onepulse=.true.
 
@@ -141,8 +141,8 @@ C     I'm assuming this way is correct.
       enddo
       enddo
       
-      fitamp='y'
-      mulrun='n'
+      fitamp='Y'
+      mulrun='N'
       nptsdef=4096
       bmindef=25.
 c     itzero and i1stgood for 1/2 pulses, res= 8/16 ns
@@ -157,23 +157,11 @@ c     itzero and i1stgood for 1/2 pulses, res= 8/16 ns
 997   firstgo='f'
       frames=ifram
 
-      ans='n'
+      ans='N'
 
 C     npulsdef = single (1) or double (2) pulse
       if (onepulse) npulse=1
       if (.not.onepulse) npulse=2
-
-      if (varydt) then
-          fitdead='y'
-      else
-          fitdead='n'    
-      endif
-
-      if (fixphasein) then
-          fixphase='y' 
-      elseif (ans.ne.' ') then
-          fixphase='n'
-      endif
 
       def=deflevel
 
@@ -262,8 +250,12 @@ c     deadtimes
       enddo
 
       f_out = f
+      if (fixphase) then
+        phi_out = phase_in
+      else
+        phi_out = phi
+      endif
       taud_out = taud
-      phi_out = phi
 
       call print_log_msg("debug", "Leaving Fortran.")
 

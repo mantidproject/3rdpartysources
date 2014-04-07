@@ -13,7 +13,7 @@ C
       common/sense/phi(64),TAUD(64),phases(64)
       REAL A(64),B(64),c(64),d(64),E(8192),taud
       REAL DATUM(NPTS,NGROUPS),SIGMA(NPTS,NGROUPS)
-      CHARACTER*1 FITDEAD,FIXPHASE,FITAMP
+      CHARACTER*1 FITAMP
 	CHARACTER*2046 str      
       DATA AMP /1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
      &          1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,48*1.0/

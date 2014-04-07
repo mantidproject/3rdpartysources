@@ -8,7 +8,7 @@ C
       REAL SF(9000),GUESS(9000,64),TEST(9000,64),chi(64)
       REAL A(64),B(64),c(64),d(64),E(8192)
       real datt(npts,ngroups)
-      CHARACTER*1 ANS,fitdead,fixphase,fitamp
+      CHARACTER*1 ANS,fitamp
       CHARACTER*1 AA
 	character*2046 str
       REAL ZR(8192),ZI(8192)  
