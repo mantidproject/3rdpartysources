@@ -57,7 +57,8 @@ C	write(99,*) "back from input"
      +   '      freqsum ')
       call print_log_msg("notice", TRIM(str))
 
-1     CALL MAXENT(NGROUPS,NPTS,P,DATUM,SIGMA,def,BASE,10,.FALSE.)
+1     CALL MAXENT(NGROUPS,NPTS,P,DATUM,SIGMA,def,BASE,10,.FALSE.,ngo)
+
       IF (fitdead) THEN
           CALL DEADFIT(NGROUPS,NPTS,P,DATUM,SIGMA
      +                  ,CORR,DATT)

@@ -2,7 +2,7 @@ C
 C     ************************************************************
 C
       SUBROUTINE MAXENT(NGROUPS,NPTS,P,DATUM,
-     +SIGMA,FLAT,BASE,MAX,SUMFIX)
+     +SIGMA,FLAT,BASE,MAX,SUMFIX,CYCLE_NUMBER)
       INTEGER P
       REAL F(68000),BASE(68000),OX(68000),CGRAD(68000),
      +SGRAD(68000),XI(68000,3),ETA(68000,3),S1(3),S2(3,3),
@@ -14,6 +14,9 @@ C
       common/heritage/iter
 	common/MaxPage/n,f
       LOGICAL SUMFIX
+      INTEGER CYCLE_NUMBER
+
+      common/mantid_output/chi_sq(10,10)
 c     
       BLANK=FLAT
       IF(BLANK.EQ.0.)GOTO 7
@@ -111,6 +114,11 @@ c
       
       write(str,103)ITER,TEST,S,CHTARG,CHISQ,XSUM
       call print_log_msg("notice", TRIM(str))
+
+C     For the first cycle of maxent we end up with 11 iterations rather than
+C     10, so to fit our output array to Mantid just ignore the first one in
+C     that instance.  Need to check with Aidy if this is OK.
+      if(ITER.NE.0) chi_sq(CYCLE_NUMBER+1, ITER) = CHISQ
 
 103   FORMAT(I3,4X,5(E10.4,2X))
       BETA(1)=-0.5*C1(1)/C2(1,1)

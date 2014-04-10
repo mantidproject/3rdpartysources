@@ -9,7 +9,7 @@ C* almost like dictionary access.                                     *
 C**********************************************************************
 
       subroutine mantid_maxent(data_in, groups_in, taud_in, phase_in,
-     +f_out, fchan_out, taud_out, phi_out)
+     +f_out, fchan_out, taud_out, phi_out, chi_sq_out)
 
 C     Correct way to use STDOUT pipe.  For debug statements.
       use iso_fortran_env, only stdout => output_unit
@@ -62,6 +62,8 @@ Cf2py intent(out) fchan_out
 Cf2py intent(out) taud_out
       real phi_out(96)
 Cf2py intent(out) phi_out
+      real chi_sq_out(10,10)
+Cf2py intent(out) chi_sq_out
 
 C     Same variables as declared in the original opengenie_maxent subroutine.
       character(255) readdata
@@ -101,6 +103,10 @@ C     Same variables as declared in the original opengenie_maxent subroutine.
       integer itotal,nhistos,histo,dest,histlen
       integer group
       real res, num, demon
+
+C     Common block to store any values we'd like to return to Mantid, which
+C     are otherwise buried within the code.
+      common/mantid_output/chi_sq(10,10)
 
       call print_log_msg("debug", "Starting underlying Fortran.")
 
@@ -256,6 +262,7 @@ c     deadtimes
         phi_out = phi
       endif
       taud_out = taud
+      chi_sq_out = chi_sq
 
       call print_log_msg("debug", "Leaving Fortran.")
 
