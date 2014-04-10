@@ -2,11 +2,11 @@ C
 C**************************************************************
 C
       SUBROUTINE START(NGROUPS,NPTS,P)
-      REAL AMP(64),PH(64),PHASE(64)
+      REAL AMP(96),PH(96),PHASE(96)
       common/pulses/npulse,DEF
       COMMON/FASE/PHASE,phshift
       COMMON/DETECT/A,B,E,c,d
-      REAL A(64),B(64),c(64),d(64),E(8192),AA(8192),GW(8192),WW(8192)
+      REAL A(96),B(96),c(96),d(96),E(8192),AA(8192),GW(8192),WW(8192)
       COMMON/MISSCHANNELS/MM
       COMMON/RUNDATA/RES,FRAMES,FNORM,IRUNNO,HISTS
       COMMON/MACH/MACHINE

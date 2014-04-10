@@ -9,7 +9,7 @@ C
       common/pulseshape/convolR(8192),CONVOLI(8192)
       COMMON/MISSCHANNELS/MM
       COMMON/DETECT/A,B,E,c,d
-      REAL A(64),B(64),c(64),d(64),E(8192)
+      REAL A(96),B(96),c(96),d(96),E(8192)
 8     DO 1 I=1,68000
 1     Y(I)=0.0
       DO 2 K=1,npts

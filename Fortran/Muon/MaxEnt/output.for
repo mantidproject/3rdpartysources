@@ -11,12 +11,12 @@ C      use FileDef
       common/flags/FITDEAD,FIXPHASE,FITAMP
       common/ans/ans
       common/amps/amp
-      common/sense/phi(64),TAUD(64)
+      common/sense/phi(96),TAUD(96)
       common/fac/factor,facdef,facfake,ratio
 	common/MaxPage/n,f
       COMMON/DETECT/A,B,E,c,d
-      REAL A(64),B(64),c(64),d(64),E(8192)
-      REAL F(68000),amp(64),asym(64),sum,ao(64)
+      REAL A(96),B(96),c(96),d(96),E(8192)
+      REAL F(68000),amp(96),asym(96),sum,ao(96)
       INTEGER N,IRUNNO
       CHARACTER*20 FNAME
       character*1 fitamp,ans,an

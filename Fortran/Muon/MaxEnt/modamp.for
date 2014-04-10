@@ -3,10 +3,10 @@ C ****************************************************************
 C
       SUBROUTINE MODAMP(HISTS,NGROUPS,NPTS,P,DATUM,SIGMA)
       INTEGER P
-      REAL DATUM(NPTS,NGROUPS),F(68000),SIGMA(NPTS,NGROUPS),PHASE(64)   	
-      REAL CS(64),SN(64),AMP(64),phi(64)
+      REAL DATUM(NPTS,NGROUPS),F(68000),SIGMA(NPTS,NGROUPS),PHASE(96)   	
+      REAL CS(96),SN(96),AMP(96),phi(96)
       REAL ZR(8192),ZI(8192),HISTS(NGROUPS)
-      REAL A(64),B(64),c(64),d(64),E(8192)
+      REAL A(96),B(96),c(96),d(96),E(8192)
 	character*2046 str
       COMMON/MISSCHANNELS/MM
       COMMON/DETECT/A,B,E,c,d

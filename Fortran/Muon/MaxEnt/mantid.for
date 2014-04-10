@@ -17,11 +17,11 @@ C     Correct way to use STDOUT pipe.  For debug statements.
 C     Various array inputs.
       integer data_in(262144)
 Cf2py intent(in) data_in
-      integer groups_in(64)
+      integer groups_in(96)
 Cf2py intent(in) groups_in
-      real taud_in(64)
+      real taud_in(96)
 Cf2py intent(in) taud_in
-      real phase_in(64)
+      real phase_in(96)
 Cf2py intent(in) phase_in
 
 C     Declare python callbacks, which we use to look up input parameters of
@@ -58,9 +58,9 @@ C     Results.
 Cf2py intent(out) f_out
       real fchan_out(68000)
 Cf2py intent(out) fchan_out
-      real taud_out(64)
+      real taud_out(96)
 Cf2py intent(out) taud_out
-      real phi_out(64)
+      real phi_out(96)
 Cf2py intent(out) phi_out
 
 C     Same variables as declared in the original opengenie_maxent subroutine.
@@ -78,16 +78,16 @@ C     Same variables as declared in the original opengenie_maxent subroutine.
       common/points/npts,ngroups,nhists
       common/pulses/npulse,def
       common/rundata/res,frames,fnorm,irunno,hists
-      common/datall/rdata(64,4096)
+      common/datall/rdata(96,4096)
       common/framin/iframnew
-      common/datin/runin(64,4096),histco(64),hblock(15)
+      common/datin/runin(96,4096),histco(96),hblock(15)
       integer rdata,runin
       character(80) hblock,histco
       common/flags/fitdead,fixphase,fitamp
       common/file/name
-      common/grouping/group(64)
+      common/grouping/group(96)
       common/mach/machine
-      common/sense/phi(64),taud(64),phases(64)
+      common/sense/phi(96),taud(96),phases(96)
       common/savetime/ngo,i2pwr
       common/moments/bmindef
       character(40) title,name
@@ -96,7 +96,7 @@ C     Same variables as declared in the original opengenie_maxent subroutine.
       character(40) grptitle
       character(80) commentline
       character(2046) str
-      real hists(64)
+      real hists(96)
       real nfram,f(68000),fperchan
       integer itotal,nhistos,histo,dest,histlen
       integer group

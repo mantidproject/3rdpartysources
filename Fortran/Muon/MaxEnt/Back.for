@@ -3,15 +3,15 @@ C ************************************************************
 C
       SUBROUTINE BACK(HISTS,NGROUPS,NPTS,P,DATUM,SIGMA,CORR)
       INTEGER P
-      REAL ZR(8192),ZI(8192),AMP(64),PH(64)
+      REAL ZR(8192),ZI(8192),AMP(96),PH(96)
       REAL CORR(NPTS,NGROUPS),HISTS(NGROUPS)
       COMMON/MISSCHANNELS/MM
       COMMON/FLAGS/FITDEAD,FIXPHASE,FITAMP
       COMMON/RUNDATA/RES,IRUNNO,IFRAM
       COMMON/DETECT/A,B,E,c,d
-      COMMON/FASE/PHASE(64),phshift
-      common/sense/phi(64),TAUD(64),phases(64)
-      REAL A(64),B(64),c(64),d(64),E(8192),taud
+      COMMON/FASE/PHASE(96),phshift
+      common/sense/phi(96),TAUD(96),phases(96)
+      REAL A(96),B(96),c(96),d(96),E(8192),taud
       REAL DATUM(NPTS,NGROUPS),SIGMA(NPTS,NGROUPS)
       CHARACTER*1 FITAMP
 	CHARACTER*2046 str      

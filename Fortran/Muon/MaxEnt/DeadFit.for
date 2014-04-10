@@ -6,15 +6,15 @@ C
       INTEGER P
       REAL DATUM(NPTS,NGROUPS),SIGMA(NPTS,NGROUPS),F(68000)
       REAL ZR(8192),ZI(8192),TAUD,CORR(NPTS,NGROUPS)
-      REAL A(64),B(64),c(64),d(64),E(8192)
-      REAL DATT(NPTS,NGROUPS),HISTS(64)
+      REAL A(96),B(96),c(96),d(96),E(8192)
+      REAL DATT(NPTS,NGROUPS),HISTS(96)
 	character*2046 str
       common/savetime/ngo,i2pwr
       common/fac/factor,facdef,facfake,ratio
       COMMON/DETECT/A,B,E,c,d
       COMMON/RUNDATA/RES,FRAMES,FNORM,IRUNNO,HISTS
       COMMON/MISSCHANNELS/MM
-      common/sense/phi(64),TAUD(64)
+      common/sense/phi(96),TAUD(96)
 	common/MaxPage/n,f
       CALL ZFT(P,N,F,ZR,ZI)
       DO 3 J=1,NGROUPS

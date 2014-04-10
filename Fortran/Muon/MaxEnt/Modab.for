@@ -2,16 +2,16 @@ C
       SUBROUTINE MODAB(HISTS,NGROUPS,NPTS,P,DATUM,SIGMA)
       INTEGER P
       REAL DATUM(NPTS,NGROUPS),F(68000),SIGMA(NPTS,NGROUPS)
-      REAL AMP(64),HISTS(NGROUPS)
+      REAL AMP(96),HISTS(NGROUPS)
       REAL ZR(8192),ZI(8192)
 	character*2046 str
       common/savetime/ngo,i2pwr
-      common/sense/phi(64)
+      common/sense/phi(96)
       COMMON/MISSCHANNELS/MM
       COMMON/DETECT/A,B,E,c,d
       common/amps/amp
       CHARACTER AN
-      REAL A(64),B(64),c(64),d(64),E(8192)
+      REAL A(96),B(96),c(96),d(96),E(8192)
 	common/MaxPage/n,f
       CALL ZFT(P,N,F,ZR,ZI)
       DO 3 J=1,NGROUPS

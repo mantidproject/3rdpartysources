@@ -5,7 +5,7 @@ C
       INTEGER P
       REAL DATUM(NPTS,NGROUPS),SIGMA(NPTS,NGROUPS),F(68000)
       REAL ZR(8192),ZI(8192),HISTS(NGROUPS)
-      REAL A(64),B(64),c(64),d(64),E(8192)
+      REAL A(96),B(96),c(96),d(96),E(8192)
 	character*255 str
       common/savetime/ngo,i2pwr
       common/fac/factor,facdef,facfake,ratio

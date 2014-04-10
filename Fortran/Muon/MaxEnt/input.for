@@ -9,9 +9,9 @@ C
       COMMON/RUNDATA/RES,FRAMES,FNORM,IRUNNO,HISTS
       COMMON/GROUPING/GROUP
       COMMON/MACH/MACHINE
-      common/sense/phi(64),TAUD(64)
-      common/datall/rdata(64,4096)
-      common/datin/runin(64,4096),histco(64),hblock(15)
+      common/sense/phi(96),TAUD(96)
+      common/datall/rdata(96,4096)
+      common/datin/runin(96,4096),histco(96),hblock(15)
       integer rdata,runin
       character*80 hblock,histco
       COMMON/FILE/NAME
@@ -22,10 +22,10 @@ C
       CHARACTER*1 ANS,fitdead,fixphase,fitamp
       CHARACTER*3 MACHINE
 	character*2046 str
-      REAL CORR(NPTS,NGROUPS),DATT(NPTS,NGROUPS),HISTS(64)
+      REAL CORR(NPTS,NGROUPS),DATT(NPTS,NGROUPS),HISTS(96)
       REAL DATUM(NPTS,NGROUPS),SIGMA(NPTS,NGROUPS),TAUD,NFRAM
       INTEGER TEMP(9000),ITOTAL,NHISTOS,HISTO,IDEST
-      INTEGER COLDSTORE(9000,64),GROUP(64)
+      INTEGER COLDSTORE(9000,96),GROUP(96)
 c      OPEN(5,FILE=NAME,STATUS='OLD')
       do 110 i=1,15
 c      read(5,11)title

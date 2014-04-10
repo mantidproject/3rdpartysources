@@ -16,13 +16,13 @@ c      PROGRAM multimax
 
 
       REAL DATUM(68000),SIGMA(68000),F(68000),BASE(68000),
-     +CONVOLR(8192),CONVOLI(8192),HISTS(64)
-      INTEGER P,GROUP(64)
+     +CONVOLR(8192),CONVOLI(8192),HISTS(96)
+      INTEGER P,GROUP(96)
       CHARACTER*1 ANS,AN,FITAMP,firstgo
       COMMON/FILE/NAME
       COMMON/DETECT/A,B,E,c,d
-      REAL A(64),B(64),c(64),d(64),E(8192)
-      common/sense/phi(64),TAUD(64)
+      REAL A(96),B(96),c(96),d(96),E(8192)
+      common/sense/phi(96),TAUD(96)
       REAL TAUD
       REAL CORR(68000),DATT(68000)
       logical FITDEAD,FIXPHASE
