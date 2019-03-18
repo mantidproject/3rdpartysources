@@ -1,7 +1,0 @@
-     SZIP Build and Install Instructions for Windows Vista and VS2010
-------------------------------------------------------------------------
-Open the project in All folder and build it from the studio. 
-the libraries are placed in all\lib abd dll-s in all\libdll folders
-
-Run installszip.bat to copy these libraries into .\szipbin location
-copy these in proper MANTID folders manually

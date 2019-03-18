@@ -1,9 +1,0 @@
-﻿Build started 02/08/2010 09:52:52.
-     1>Project "C:\gsl-1.14\build.vc10\gslhdrs\gslhdrs.vcxproj" on node 3 (clean target(s)).
-     1>_PrepareForClean:
-         Deleting file "Win32\Debug\gslhdrs.lastbuildstate".
-     1>Done Building Project "C:\gsl-1.14\build.vc10\gslhdrs\gslhdrs.vcxproj" (clean target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:00.07

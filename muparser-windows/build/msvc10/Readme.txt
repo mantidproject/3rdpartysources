@@ -1,1 +1,0 @@
-These solution/project files were created by upgrading the MSVC8 ones in Visual Studio 2010.
