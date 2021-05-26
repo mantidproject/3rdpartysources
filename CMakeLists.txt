@@ -21,7 +21,5 @@ find_package(F2PY REQUIRED)
 include_directories(${Python_INCLUDE_DIRS})
 include_directories(${NUMPY_INCLUDE_DIR})
 
-enable_language(Fortran)
-
 add_subdirectory(Fortran)
 
