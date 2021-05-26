@@ -112,5 +112,3 @@ find_package_handle_standard_args(F2PY
   )
 
 mark_as_advanced(F2PY_EXECUTABLE)
-
-include(UseF2PY)
