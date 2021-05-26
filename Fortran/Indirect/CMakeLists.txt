@@ -3,11 +3,19 @@ set(generated_module_file ${CMAKE_CURRENT_BINARY_DIR}/${module_name}${PYTHON_EXT
 add_custom_target(${module_name} ALL
   DEPENDS ${generated_module_file}
 )
+if(WIN32)
 add_custom_command(
   OUTPUT ${generated_module_file}
-  COMMAND ${F2PY_EXECUTABLE} -c -m ${module_name} ${module_main} only: ${only_arg} : ${ARGN}
+  COMMAND ${F2PY_EXECUTABLE} -c --fcompiler=gnu95 --compiler=mingw32 -m ${module_name} ${module_main} only: ${only_arg} : ${ARGN}
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 )
+else()
+add_custom_command(
+  OUTPUT ${generated_module_file}
+  COMMAND ${F2PY_EXECUTABLE} -c --fcompiler=gnu95 --compiler=unix -m ${module_name} ${module_main} only: ${only_arg} : ${ARGN}
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+)
+endif()
 endfunction()
 
 set(Qldata_module_name "QLdata")
