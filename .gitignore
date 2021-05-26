@@ -1,3 +1,4 @@
 # Ignore all library files
 *.so
 *.pyd
+build/**
