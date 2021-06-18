@@ -10,7 +10,7 @@ Using conda is the recommended way of building. On windows the following works:
 conda create --name fortran python=3.8
 conda activate fortran
 conda install numpy
-conda install -c msys2 m2w64-gcc-libgfortran
+conda install -c msys2 m2w64-gcc-fortran
 mkdir build
 cd build
 cmake ..

@@ -2,9 +2,10 @@ cmake_minimum_required(VERSION 3.16)
 
 project(MantidFortranRoutines)
 
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 find_package (Python COMPONENTS Interpreter Development NumPy)
+find_package(PythonExtensions)
 
 # Find numpy headers
 exec_program(${Python_EXECUTABLE}
