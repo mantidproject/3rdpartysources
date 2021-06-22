@@ -17,6 +17,16 @@ if(NUMPY_NOT_FOUND)
     message(FATAL_ERROR "NumPy headers not found")
 endif()
 
+
+# We have warnigns of converting COMPLEX to REALS, we need to silence them to build with later versions of gfrotran
+find_package(GFortran)
+set(GFORTRAN_FLAGS "")
+if (${GFORTRAN_VERSION_STRING} VERSION_LESS "10" )
+set(GFORTRAN_FLAGS "-Wno-argument-mismatch")
+else()
+set(GFORTRAN_FLAGS "-fallow-argument-mismatch")
+endif()
+
 find_package(F2PY REQUIRED)
 # include python and numpy dirs
 include_directories(${Python_INCLUDE_DIRS})

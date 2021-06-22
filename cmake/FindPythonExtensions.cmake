@@ -19,10 +19,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #=============================================================================
-
-find_package(PythonInterp REQUIRED)
-find_package(PythonLibs)
-
 set(_command "
 import distutils.sysconfig
 import itertools
@@ -71,7 +67,8 @@ sys.stdout.write(\";\".join((
 )))
 ")
 
-execute_process(COMMAND "${PYTHON_EXECUTABLE}" -c "${_command}"
+if(Python_Interpreter_FOUND)
+execute_process(COMMAND "${Python_EXECUTABLE}" -c "${_command}"
                 OUTPUT_VARIABLE _list
                 RESULT_VARIABLE _result)
 
@@ -98,4 +95,8 @@ mark_as_advanced(PYTHON_RELATIVE_SITE_PACKAGES_DIR)
 if(NOT DEFINED PYTHON_EXTENSION_MODULE_SUFFIX)
   list(GET _list 5 _item)
   set(PYTHON_EXTENSION_MODULE_SUFFIX "${_item}")
+endif()
+
+else()
+message(STATUS "To define Python exetensions Python interpretator is required to be found.")
 endif()
