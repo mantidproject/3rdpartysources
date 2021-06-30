@@ -65,8 +65,7 @@
 #   Using ``f2py`` with ``-c`` argument means that f2py is also responsible to build the module. In that
 #   case, CMake is not used to find the compiler and configure the associated build system.
 #
-
-find_program(F2PY_EXECUTABLE NAMES f2py${PYTHON_VERSION_MAJOR} f2py)
+find_program(F2PY_EXECUTABLE NAMES f2py${Python_VERSION_MAJOR} f2py)
 
 if(NOT F2PY_INCLUDE_DIR)
   message(STATUS "Looking for someheader.h - found" ${Python_EXECUTABLE})
@@ -85,11 +84,11 @@ file(GLOB _f2py_sources "${F2PY_INCLUDE_DIR}/*.c")
 add_library(_f2py_runtime_library STATIC ${_f2py_sources})
 target_include_directories(
   _f2py_runtime_library
-  PRIVATE ${PYTHON_INCLUDE_DIRS} ${NumPy_INCLUDE_DIRS}
+  PRIVATE ${Python_INCLUDE_DIRS} ${Python_NumPy_INCLUDE_DIRS}
 )
 
 set(F2PY_LIBRARIES _f2py_runtime_library)
-set(F2PY_INCLUDE_DIRS "${F2PY_INCLUDE_DIR}" "${NumPy_INCLUDE_DIRS}")
+set(F2PY_INCLUDE_DIRS "${F2PY_INCLUDE_DIR}" "${Python_NumPy_INCLUDE_DIRS}")
 
 if(F2PY_EXECUTABLE)
   # extract the version string
