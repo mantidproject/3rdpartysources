@@ -27,5 +27,5 @@ add_custom_command(
 endif()
 endfunction()
 
-add_subdirectory(Bayes)
-add_subdirectory(AbsCorrection)
+add_subdirectory(mantidindirect/Bayes)
+add_subdirectory(mantidindirect/AbsCorrection)

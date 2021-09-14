@@ -1,4 +1,7 @@
 # Ignore all library files
 *.so
 *.pyd
-build/**
+**/build
+dist/**
+.DS_STORE
+*.whl
