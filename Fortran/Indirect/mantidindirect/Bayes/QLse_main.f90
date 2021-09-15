@@ -136,9 +136,9 @@ c     reals = [efix, theta[isp], rscl, bnorm]
       fileout2 = ''
       fileout3 = ''
       l_lpt=l_fn+8
-      lptfile(1:l_lpt)=sfile(1:l_fn)//'_Qse.lpt'
+      lptfile(1:l_lpt)=sfile(1:l_fn)//'_QSe.lpt'
       l_file=l_fn+8
-      fileout1(1:l_lpt)=sfile(1:l_fn)//'_Qse.qse'
+      fileout1(1:l_lpt)=sfile(1:l_fn)//'_QSe.qse'
       l_title=9
       title='<unknown>'
       l_user=9
@@ -253,7 +253,7 @@ c
       CALL SEEFIT(SIGPAR,CNORM,PRMSV(1,NFEW+1,ISP),
      *              SIGSV(1,NFEW+1,ISP),NPARMS+1)
       CALL OUTPRM(FITP,COVAR,NPARMS+1,NFEW,CNORM)
-      call PROBN(CNORM,numb(4),DETLOG,NFEW,PROBLG)
+      call PROBN(CNORM,numb(4),DETLOG,NFEW,3, PRBSV(1,ISP))
       noff=NDAT*NFEW
       do n=1,NDAT
        yfit(noff+n)=FIT(n)

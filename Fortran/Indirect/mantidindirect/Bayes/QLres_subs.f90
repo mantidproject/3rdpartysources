@@ -45,6 +45,7 @@
        QW1(n)=0.0
        SIGQW1(n)=0.0
       end do
+      RETURN
       END
 C     ------------------------------------
       SUBROUTINE OUTPRM(P,C,NP,NFEW,CNORM)

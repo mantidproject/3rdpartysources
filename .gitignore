@@ -5,3 +5,4 @@
 dist/**
 .DS_STORE
 *.whl
+Fortran/Indirect/mantidindirect.egg-info/
