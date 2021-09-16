@@ -33,3 +33,19 @@ cmake --build .
 The python extension libraries will be placed in the ```build/bin``` folder.
 
 
+
+Alternatively, you can build the libraries using the setup.py file in the Fortran/Indirect folder. To use this, create the minimal conda environment as shown above. Now do:
+
+
+```
+cd Fortran/Indirect
+python setup.py bdist_wheel
+```
+
+to build a wheel. This wheel can be uploaded using twine:
+
+```
+twine upload ./dist/name_of_wheel
+```
+
+Linux wheels require a docker image. For more details see this blog https://uwekorn.com/2019/09/15/how-we-build-apache-arrows-manylinux-wheels.html
