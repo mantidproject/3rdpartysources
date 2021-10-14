@@ -42,11 +42,12 @@ muscat = numpy.distutils.core.Extension(name="muscat",
 numpy.distutils.core.setup(
     name='mantidindirect',
     ext_modules=[ResNorm, Quest, QLse, QLres, QLdata, muscat],
+    install_requires=['numpy>=1.17.5'],
     description='Mantid indirect fortran libraries for Bayes and Absorption correction analysis',
     long_description='These libraries wrap fortran Bayes and Absorption correction libraries using f2py',
     author='Mantid Team',
     author_email="mantid-help@mantidproject.org",
     url='https://www.mantidproject.org',
-    version="0.1.3",
+    version="0.1.4",
     license='BSD',
 )
