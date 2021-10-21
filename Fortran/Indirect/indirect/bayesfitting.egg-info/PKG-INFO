@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: bayesfitting
+Version: 0.1.0
+Summary: A Bayesian fitting package used for fitting quasi-elastic neutron scattering data.
+Home-page: https://www.mantidproject.org
+Author: Mantid Team
+Author-email: mantid-help@mantidproject.org
+License: BSD
+Platform: UNKNOWN
+License-File: LICENSE.txt
+
+This package wraps fortran Bayesian fitting libraries using f2py. An application of this package is to fit quasi elastic neutron scattering data in Mantid (https://www.mantidproject.org)
+

@@ -4,7 +4,7 @@
 # SPDX - License - Identifier: BSD-3-Clause
 
 # --- Public API --------------------------------------------------------------
-from . import bayes
+from . import QLdata, QLres, ResNorm, QLse
 
 
 
